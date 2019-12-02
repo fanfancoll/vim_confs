@@ -71,7 +71,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Ignored"   : "I",
     \ "Unknown"   : "?"
     \ }
-let g:NERDTreeWinSize=12
+let g:NERDTreeWinSize=20
 
 """"""""""
 "" AUTOCMDS
@@ -121,6 +121,7 @@ nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <space> za
 " YCM
 nnoremap <silent> <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent> <leader>f :YcmCompleter FixIt<CR>
 " Tagbar
 nnoremap <leader>t :TagbarToggle<CR>
 " Syntastic
