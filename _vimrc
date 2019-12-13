@@ -92,7 +92,8 @@ autocmd BufWinEnter * NERDTreeMirror
 " autocmd VimEnter * SyntasticToggleMode
 " colorscheme
 autocmd VimEnter * colorscheme molokai
-
+" for ROS, set syntax of launch file as xml
+autocmd BufNewFile,BufRead *.launch set ft=xml
 """"""""""
 " maps
 let mapleader="\\"
