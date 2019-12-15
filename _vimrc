@@ -94,6 +94,8 @@ autocmd BufWinEnter * NERDTreeMirror
 autocmd VimEnter * colorscheme molokai
 " for ROS, set syntax of launch file as xml
 autocmd BufNewFile,BufRead *.launch set ft=xml
+" Disable mouse for gvim
+autocmd VimEnter * set mouse=""
 """"""""""
 " maps
 let mapleader="\\"
@@ -125,10 +127,9 @@ nnoremap <silent> <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>f :YcmCompleter FixIt<CR>
 " Tagbar
 nnoremap <leader>t :TagbarToggle<CR>
-" Syntastic
-" nnoremap <leader>sy :SyntasticCheck<CR>
-
-""""""""""
+" MarkdownPreview
+nnoremap <leader>mp :MarkdownPreview<CR>
+"""""""""
 " Commands
 " command Tq execute "tabclose"
 
@@ -150,6 +151,13 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+call plug#end()
