@@ -43,7 +43,10 @@ let g:ycm_max_diagnostics_to_display=0
 " syntax check
 let python_highlight_all=1
 syntax on
-""""""""""
+
+" vimtex
+let g:vimtex_view_method = 'zathura'
+"""""""""
 "" functions
 
 " Highlight word under cursor
@@ -153,6 +156,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'lervag/vimtex'
 
 call vundle#end()
 
