@@ -88,7 +88,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd l | endif
-autocmd BufWinEnter * NERDTreeMirror
+" autocmd BufWinEnter * NERDTreeToggle
 " Tagbar
 "autocmd BufEnter * TagbarToggle
 " Syntastic
@@ -132,7 +132,10 @@ nnoremap <silent> <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 " MarkdownPreview
 nnoremap <leader>mp :MarkdownPreview<CR>
-"""""""""
+" NERDTree
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+" map :NERDTreeToggle :NERDTreeMirror
+""""""""
 " Commands
 " command Tq execute "tabclose"
 
