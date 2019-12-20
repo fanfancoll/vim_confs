@@ -102,6 +102,8 @@ autocmd VimEnter * set mouse=""
 """"""""""
 " maps
 let mapleader="\\"
+" close tab
+nnoremap <leader>c :tabc<CR>
 " edit vimrc
 nnoremap <F9> :sp ~/.vimrc<CR>
 nnoremap <F6> :so ~/.vimrc<CR>
