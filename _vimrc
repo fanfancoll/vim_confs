@@ -88,11 +88,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd l | endif
-" autocmd BufWinEnter * NERDTreeToggle
-" Tagbar
-"autocmd BufEnter * TagbarToggle
-" Syntastic
-" autocmd VimEnter * SyntasticToggleMode
 " colorscheme
 autocmd VimEnter * colorscheme molokai
 " for ROS, set syntax of launch file as xml
@@ -136,7 +131,6 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>mp :MarkdownPreview<CR>
 " NERDTree
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-" map :NERDTreeToggle :NERDTreeMirror
 """"""""
 " Commands
 " command Tq execute "tabclose"
@@ -155,7 +149,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jiangmiao/auto-pairs'
