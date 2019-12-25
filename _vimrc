@@ -108,6 +108,11 @@ nnoremap <left> <c-w><c-h>
 nnoremap <right> <c-w><c-l>
 nnoremap <up> <c-w><c-k>
 nnoremap <down> <c-w><c-j>
+" move cursor in wrapped text
+nnoremap <silent> k gk
+nnoremap <silent> j gj
+nnoremap <silent> 0 g0
+nnoremap <silent> $ g$
 " resize window
 nnoremap <s-left> <c-w><
 nnoremap <s-right> <c-w>>
