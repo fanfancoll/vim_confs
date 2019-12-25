@@ -16,6 +16,7 @@ set shiftwidth=4
 set listchars=tab:>·,trail:·
 set nowrap
 set updatetime=500
+set cursorline
 
 " Enable folding
 set foldmethod=indent
@@ -115,7 +116,7 @@ nnoremap <s-down> <c-w>-
 " move between tabs
 nnoremap <silent> - :tabp<CR>
 " set to wrap
-nnoremap <leader>w :set wrap<CR>
+nnoremap <leader>w :set wrap!<CR>
 " git gutter
 nnoremap <silent> <leader>f :GitGutterFold<CR>
 " fugitive
