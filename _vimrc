@@ -10,6 +10,7 @@ let skip_defaults_vim=1
 
 " General settings
 set nu!
+set relativenumber
 set list
 set tabstop=4
 set shiftwidth=4
