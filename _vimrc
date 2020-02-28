@@ -41,6 +41,10 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_confirm_extra_conf=0
 let g:ycm_always_populate_location_list=1
 let g:ycm_max_diagnostics_to_display=0
+" For UltiSnips compatibility
+let g:ycm_key_list_select_completion = ['<C-n>']
+let g:ycm_key_list_previous_completion = ['<C-p>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " syntax check
 let python_highlight_all=1
@@ -49,6 +53,12 @@ syntax on
 " vimtex
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_latexmk = {'continuous':0}
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 """""""""
 "" functions
 
@@ -163,6 +173,10 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'lervag/vimtex'
+Plugin 'tpope/vim-surround'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 
