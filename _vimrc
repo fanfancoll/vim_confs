@@ -105,8 +105,11 @@ autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd l | endif
 autocmd VimEnter * colorscheme molokai
 " for ROS, set syntax of launch file as xml
 autocmd BufNewFile,BufRead *.launch set ft=xml
+autocmd BufNewFile,BufRead *.cve set ft=c
 " Disable mouse for gvim
 autocmd VimEnter * set mouse=""
+" Cuda
+autocmd FileType cuda set ft=c
 """"""""""
 " maps
 let mapleader="\\"
