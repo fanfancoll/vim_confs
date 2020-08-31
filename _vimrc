@@ -118,6 +118,12 @@ nnoremap <leader>c :tabc<CR>
 " edit vimrc
 nnoremap <F9> :sp ~/.vimrc<CR>
 nnoremap <F6> :so ~/.vimrc<CR>
+" Go to specific window
+let i = 1
+while i <= 9
+    execute 'nnoremap <Leader>' . i . ' :' . i . 'wincmd w<CR>'
+    let i = i + 1
+endwhile
 " up down left right
 nnoremap <left> <c-w><c-h>
 nnoremap <right> <c-w><c-l>
