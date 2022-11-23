@@ -41,10 +41,13 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_confirm_extra_conf=0
 let g:ycm_always_populate_location_list=1
 let g:ycm_max_diagnostics_to_display=0
+let g:ycm_show_detailed_diag_in_popup=1
+let g:ycm_clangd_args=['-query-driver=aarch64-linux-gnu-g++']
 " For UltiSnips compatibility
 let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_key_list_previous_completion = ['<C-p>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_auto_hover = ''
 
 " syntax check
 let python_highlight_all=1
@@ -62,7 +65,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Syntastics
 let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -82,7 +84,7 @@ function s:HighlightWordUnderCursor()
 endfunction
 
 " NERDTree git plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
     \ "Untracked" : "U",
@@ -102,6 +104,8 @@ let g:NERDTreeWinSize=20
 au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 " Don't write backup file if vim is being called by "chpass"
 au BufWrite /private/etc/pw.* set nowritebackup nobackup
+" Remember last location
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 autocmd CursorMoved *.* call s:HighlightWordUnderCursor()
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -117,9 +121,16 @@ autocmd BufNewFile,BufRead *.cve set ft=c
 autocmd VimEnter * set mouse=""
 " Cuda
 autocmd FileType cuda set ft=c
+" YCM
+autocmd FileType c,cpp let b:ycm_hover = {
+  \ 'command': 'GetDoc',
+  \ 'syntax': &filetype
+  \ }
 """"""""""
 " maps
 let mapleader="\\"
+" insert mode end of line
+inoremap <C-a> <Esc>$a
 " close tab
 nnoremap <leader>c :tabc<CR>
 " edit vimrc
@@ -150,6 +161,11 @@ nnoremap <s-down> <c-w>-
 nnoremap <silent> - :tabp<CR>
 " set to wrap
 nnoremap <leader>w :set wrap!<CR>
+" replace text under cursor
+vnoremap <C-r> "hy:%s/\<<C-r>h\>//gc<left><left><left>"
+" increase # of lines moved by <C-e> and <C-y>
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 " git gutter
 nnoremap <silent> <leader>f :GitGutterFold<CR>
 " fugitive
@@ -159,12 +175,14 @@ nnoremap <silent> <space> za
 " YCM
 nnoremap <silent> <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>f :YcmCompleter FixIt<CR>
+nmap <leader>h <plug>(YCMHover)
 " Tagbar
 nnoremap <leader>t :TagbarToggle<CR>
 " MarkdownPreview
 nnoremap <leader>mp :MarkdownPreview<CR>
 " NERDTree
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nnoremap <silent> <leader>op :NERDTreeFind<CR>
 """"""""
 " Commands
 " command Tq execute "tabclose"
@@ -176,7 +194,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -197,8 +215,8 @@ Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-call plug#end()
+" call plug#begin('~/.vim/plugged')
+" 
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" 
+" call plug#end()
