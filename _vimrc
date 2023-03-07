@@ -54,8 +54,13 @@ let python_highlight_all=1
 syntax on
 
 " vimtex
+filetype plugin indent on
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_latexmk = {'continuous':0}
+let g:vimtex_compiler_latexmk = {
+	\ 'continuous':0,
+	\ 'options' : [
+	\ '-xelatex'
+	\ ]}
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -129,6 +134,7 @@ autocmd FileType c,cpp let b:ycm_hover = {
 """"""""""
 " maps
 let mapleader="\\"
+let maplocalleader="\\"
 " insert mode end of line
 inoremap <C-a> <Esc>$a
 " close tab
@@ -162,7 +168,7 @@ nnoremap <silent> - :tabp<CR>
 " set to wrap
 nnoremap <leader>w :set wrap!<CR>
 " replace text under cursor
-vnoremap <C-r> "hy:%s/\<<C-r>h\>//gc<left><left><left>"
+vnoremap <C-r> "hy:%s/\<<C-r>h\>//gc<left><left><left>
 " increase # of lines moved by <C-e> and <C-y>
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
